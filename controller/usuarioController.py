@@ -1,8 +1,17 @@
-from models.usuarios import User
+from models.usuario import Usuario
 
-class UserController():
+class UsuarioController():
 
-    def getUsers():
-        # User.query.all()
-        return []
+    def getAll():
+        resp = []
+        usuarios = Usuario.query.all()
+        for usuario in usuarios:
+            resp.append({
+                "id": usuario.id,
+                "username": usuario.username,
+                "nombre": usuario.nombre,
+                "email": usuario.email,
+                "admin": usuario.admin
+            })
+        return resp
     
